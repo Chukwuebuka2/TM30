@@ -29,6 +29,7 @@ db.Sequelize = Sequelize;
 
 db.users = require('./user.model')(sequelizeInstance, Sequelize);
 db.tokens = require('./token.model')(sequelizeInstance, Sequelize);
+db.transactions = require('./transaction.model')(sequelizeInstance, Sequelize);
 
 // relationships for models
 
@@ -37,9 +38,6 @@ db.tokens = require('./token.model')(sequelizeInstance, Sequelize);
 //= ==============================
 // db.User.hasMany(db.Role);
 // db.Role.belongsTo(db.User);
-
-db.users.belongsToMany(db.tasks,  { through: db.UserTask });
-db.tasks.belongsToMany(db.users,  { through: db.UserTask });
 
 module.exports = {
   db,

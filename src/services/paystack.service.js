@@ -1,6 +1,5 @@
 const axios = require('axios');
 const httpStatus = require('http-status');
-const banks = require('../utils/banks');
 const { secret } = require('../config/config').paystack;
 const ApiError = require('../utils');
 
@@ -28,8 +27,27 @@ const verifyPayment = async (reference) => {
     }
 }
 
+const initializeTransaction = async (details) => {
+    const payload = {
+        ...details,
+        amount: details.amount * 100
+    };
+
+    try {
+        const res = await apiCall.post('/transaction/initialize', payload);
+        const {
+            data: { authorization_url },
+        } = res.data;
+
+        return authorization_url;
+    } catch (error) {
+        throw new ApiError(httpStatus.BAD_REQUEST, error);
+    }
+}
+
 
 
 module.exports = {
-    verifyPayment
+    verifyPayment,
+    initializeTransaction
 }

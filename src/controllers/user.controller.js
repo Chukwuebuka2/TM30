@@ -40,5 +40,4 @@ module.exports = {
   getUser,
   updateUser,
   deleteUser,
-  getAllTaskForSpecificUser
 };

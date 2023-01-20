@@ -38,12 +38,6 @@ module.exports = (sequelize, dataType) => {
     isEmailVerified: {
       type: dataType.BOOLEAN,
     },
-    role: {
-      type: dataType.ENUM('user', 'admin'),
-      allowNull: false,
-      defaultValue: "user",
-      lowercase: true
-    }
   });
   return user;
 };
