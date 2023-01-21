@@ -5,18 +5,25 @@ module.exports = (sequelize, dataType) => {
             allowNull: false
         },
 
-        reference: {
-            type: dataType.STRING,
-            allowNull: false
-        },
-
         amount: {
             type: dataType.FLOAT,
             allowNull: false
         },
 
-        status: {
+        reference: {
             type: dataType.STRING,
+            unique: true,
+            allowNull: false
+        },
+
+        access_code: {
+            type: dataType.STRING,
+            allowNull: false
+        },
+
+        status: {
+            type: dataType.ENUM("failed", "success"),
+            defaultValue: "failed"
         }
     });
 

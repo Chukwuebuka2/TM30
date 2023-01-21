@@ -1,7 +1,8 @@
 const axios = require('axios');
 const httpStatus = require('http-status');
+const transactionService = require('./transaction.service');
 const { secret } = require('../config/config').paystack;
-const ApiError = require('../utils');
+const ApiError = require('../utils/ApiError');
 
 const apiCall = axios.create({
     baseURL: 'https://api.paystack.co',
@@ -27,17 +28,28 @@ const verifyPayment = async (reference) => {
     }
 }
 
-const initializeTransaction = async (details) => {
+const initializeTransaction = async (userId, details) => {
+    //  we need to check if the user is that is initiating the payment is the right user with the right email
+
     const payload = {
         ...details,
         amount: details.amount * 100
     };
 
+    const amount = payload.amount;
+
     try {
         const res = await apiCall.post('/transaction/initialize', payload);
         const {
-            data: { authorization_url },
+            status,
+            data: { authorization_url, access_code, reference },
         } = res.data;
+        // console.log(access_code, reference, status);
+
+        // every transaction will be saved to the transaction database
+        const transactionBody = { userId, amount, reference, access_code, status };
+        await transactionService.createTransaction(transactionBody)
+
 
         return authorization_url;
     } catch (error) {
