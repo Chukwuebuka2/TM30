@@ -20,8 +20,8 @@ To use this service follow the steps below:
 `https://github.com/Chukwuebuka2/TM30.git`
 
 
-2. Navigate to the folder `node-express-boilerplate-sequelize` by using the command
-`cd node-express-boilerplate-sequelize`
+2. Navigate to the folder `TM30` by using the command
+`cd TM30`
 
 3. Install the needed packages
 `npm i`
