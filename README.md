@@ -10,7 +10,7 @@ Your application should be able to perform the following actions:
 4. On payment and verification user account on app should be credited
 5. User should be able to get all transactions to see the status.
 
-Note: This doesn't have to be complex. Make sure to tick off the boxes in the requirement above.
+> Note: This doesn't have to be complex. Make sure to tick off the boxes in the requirement above.
 
 
 ## How to use this service
@@ -33,4 +33,4 @@ or
 
 
 
-To Read the API documentation [here](https://documenter.getpostman.com/view/20124288/2s8ZDZzLH3)
+Read the API documentation [here](https://documenter.getpostman.com/view/20124288/2s8ZDZzLH3)
