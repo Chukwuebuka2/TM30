@@ -22,8 +22,8 @@ module.exports = (sequelize, dataType) => {
         },
 
         status: {
-            type: dataType.ENUM("failed", "success"),
-            defaultValue: "failed"
+            type: dataType.ENUM("incomplete", "success", "failed"),
+            defaultValue: "incomplete"
         }
     });
 

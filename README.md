@@ -1,4 +1,4 @@
-# ksolutions-be-internship-test-chukwuebuka
+# TM30 
 
 ## Question
 Write a simple nodejs application with any database of our choice. The application is a simple payment app which keeps track of users payment for a service (You may not need to bother about the service)

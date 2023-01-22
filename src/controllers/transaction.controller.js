@@ -24,7 +24,9 @@ const verifyPayment = catchAsync(async (req, res) => {
             await transactionService.updateTransaction(req.body.reference, { "status": "success" })
             res.status(httpStatus.OK).json("Payment successfull")
         } else {
-            res.status(httpStatus.NOT_FOUND).json("Payment failed")
+            // update the status on the transaction database
+            await transactionService.updateTransaction(req.body.reference, { "status": "failed" })
+            res.json("Payment failed")
         }
     } catch (error) {
         res.status(httpStatus.BAD_REQUEST).json(error);
